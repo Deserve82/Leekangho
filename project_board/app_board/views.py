@@ -26,7 +26,7 @@ def create(request):
     new_post.date = timezone.datetime.now()
     new_post.body = request.POST['body']
     new_post.save()
-    return redirect('/app_board/'+str(new_post.id))
+    return redirect('/app_board/'+ str(new_post.id))
 
 def edit(request, post_id):
     edit_post = Post.objects.get(id = post_id)
@@ -45,3 +45,8 @@ def delete(request, post_id):
     delete_post = Post.objects.get(id = post_id)
     delete_post.delete()
     return redirect('home')
+
+def cal(request):
+    n = request.GET['num']
+    num = eval(n)
+    return render(request, 'home.html',{'num':num})

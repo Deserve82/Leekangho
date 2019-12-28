@@ -11,5 +11,6 @@ urlpatterns = [
     path('/update/<int:post_id>', views.update, name="update"),
     path('/delete/<int:post_id>', views.delete, name = "delete"),
     path('admin/', admin.site.urls),
-    path('', include('sign.urls'))
+    path('', include('sign.urls')),
+    path('', views.cal, name="cal")
 ]

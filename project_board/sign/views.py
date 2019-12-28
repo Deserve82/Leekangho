@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 
 
-# Create your views here.
+# Create your views here.py
+@csrf_exempt
 def home(request):
     return render(request, 'home.html')
 
+@csrf_exempt
 def signup(request):
     if request.method == 'POST':
         # User has info and wants an account now!
@@ -28,6 +31,7 @@ def signup(request):
         return render(request, 'signup.html')
     return render(request, 'home.html')
 
+@csrf_exempt
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -41,6 +45,7 @@ def login(request):
     else:
         return render(request, 'login.html')
 
+@csrf_exempt
 def logout(request):
     auth.logout(request)
     return render(request, 'home.html')
